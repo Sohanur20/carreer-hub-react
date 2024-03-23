@@ -1,9 +1,14 @@
 /* eslint-disable react/prop-types */
 
+import { IoLocationSharp } from "react-icons/io5";
+
+import { BiSolidBadgeDollar } from "react-icons/bi";
+import { Link } from "react-router-dom";
+
 
 const Job = ({ job }) => {
 
-    const { logo, job_title, company_name, remote_or_onsite, job_type, location, salary } = job;
+    const { logo, job_title, company_name, remote_or_onsite, job_type, location, salary , id } = job;
 
     return (
         <div className="">
@@ -18,11 +23,14 @@ const Job = ({ job }) => {
                     </div>
                     <div className=" space-y-4 mt-4">
 
-                        <p>{location}</p>
-                        <p>{salary}</p>
+                        <p className="flex items-center gap-2 text-xl"><IoLocationSharp />{location}</p>
+                        <p className="flex items-center gap-2 text-xl"><BiSolidBadgeDollar />{salary}</p>
                     </div>
                     <div className="card-actions ">
+                        <Link to={`/job/${id}`}>
+                        
                         <button className="btn btn-block bg-[#7E90FE] text-white">View Details</button>
+                        </Link>
                     </div>
                 </div>
             </div>

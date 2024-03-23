@@ -5,6 +5,7 @@ import Job from "../Job/Job";
 const FeaturedJobs = () => {
 
     const [jobs, setJobs] = useState([]);
+    const [dataLength, setDataLength] = useState(4)
 
 
     useEffect(() => {
@@ -25,9 +26,17 @@ const FeaturedJobs = () => {
 
                 {
 
-                    jobs.map( job => <Job key={job.id} job={job}></Job>)
+                    jobs.slice(0, dataLength).map(job => <Job key={job.id} job={job}></Job>)
                 }
 
+
+
+            </div>
+
+            <div className={dataLength === jobs.length && "hidden"}>
+                <div className="text-center my-5 p-2 ">
+                    <button onClick={() => setDataLength(jobs.length)} className="btn  bg-lime-200 text-2xl ">Show All JObs</button>
+                </div>
             </div>
 
         </div>

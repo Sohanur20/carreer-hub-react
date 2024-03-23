@@ -13,6 +13,7 @@ import AppiledJobs from './Component/AppliedJobs/AppiledJobs';
 import Blog from './Component/Blog/Blog';
 import Jobs from './Component/Jobs/Jobs';
 import Error from './Component/Error/Error';
+import JobDetails from './Component/JobDetails/JobDetails';
 
 
 
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
       },
       {
         path : '/appliedjobs' ,
-        element : <AppiledJobs></AppiledJobs>
+        element : <AppiledJobs></AppiledJobs>,
+        loader : () => fetch("../jobs.json")
       },
       {
         path : '/blog' ,
@@ -41,6 +43,11 @@ const router = createBrowserRouter([
       {
         path : '/jobs' ,
         element : <Jobs></Jobs>
+      },
+      {
+        path : '/job/:id' ,
+        element : <JobDetails></JobDetails>,
+        loader : () => fetch("../jobs.json")
       }
     ]
   },
